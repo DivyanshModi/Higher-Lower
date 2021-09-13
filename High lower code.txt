@@ -1,0 +1,36 @@
+import random
+import art
+from game_data import data
+from replit import clear
+
+score=0
+A=random.choice(data)
+  
+def game():
+  clear()
+  global A,score
+  print(art.logo)
+  print(f"Your score is : {score}")
+  print(f"Compare A: {A['name']},a {A['description']},from {A['country']} ")
+  val1=A['follower_count']
+  #print(val1)
+  print(art.vs)
+  B=random.choice(data)
+  print(f"Compare B: {B['name']},a {B['description']},from {B['country']} ")
+  val2=B['follower_count']
+  answer=input("Who is more popular on ig. A or B")
+  if answer.upper()=="A":
+    if val1>=val2:
+      score+=1
+      A=B
+      game()
+    else:
+      print(f"Final score {score}")
+  elif answer.upper()=="B":
+    if val2>=val1:
+      score+=1
+      game()
+    else:
+      print(f"Game over, Final score {score}")
+
+game()
